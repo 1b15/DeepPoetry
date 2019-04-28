@@ -1,2 +1,3 @@
 .idea/
 Crawler/*.txt
+./training_checkpoints
