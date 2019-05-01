@@ -13,7 +13,7 @@ model = tf.keras.models.load_model('./model.h5')
 
 def generate_text(model, start_string):
     # Number of characters to generate
-    num_generate = 1000
+    num_generate = 2000
 
     # Converting our start string to numbers (vectorizing)
     input_eval = [char2idx[s] for s in start_string]
@@ -46,4 +46,4 @@ def generate_text(model, start_string):
 
     return (start_string + ''.join(text_generated))
 
-print(generate_text(model, start_string=u"Wenn nicht Zahlen"))
+print(generate_text(model, start_string=u"%$Wenn nicht nur Zahlen und Figuren,"))

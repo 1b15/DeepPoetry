@@ -55,6 +55,12 @@ rnn_units = 1024
 
 rnn = tf.keras.layers.CuDNNGRU
 
+'''
+import functools
+rnn = functools.partial(
+    tf.keras.layers.GRU, recurrent_activation='sigmoid')
+'''
+
 def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
   model = tf.keras.Sequential([
     tf.keras.layers.Embedding(vocab_size, embedding_dim,
@@ -90,7 +96,7 @@ checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
 
 model.load_weights(tf.train.latest_checkpoint(checkpoint_dir))
 
-for epoch in range(50):
+for epoch in range(5):
     start = time.time()
 
     # initializing the hidden state at the start of every epoch
