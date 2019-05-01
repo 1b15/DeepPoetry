@@ -5,7 +5,7 @@ import numpy as np
 import os
 import time
 
-text = open('./Crawler/novalis.txt', 'rt', encoding='utf-8').read()
+text = open('./Crawler/romantik.txt', 'rt', encoding='utf-8').read()
 
 print ('Length of text: {} characters'.format(len(text)))
 
@@ -40,7 +40,7 @@ BATCH_SIZE = 64
 steps_per_epoch = examples_per_epoch//BATCH_SIZE
 
 # Buffer size to shuffle the dataset
-BUFFER_SIZE = 10000
+BUFFER_SIZE = 5000
 
 dataset = dataset.shuffle(BUFFER_SIZE).batch(BATCH_SIZE, drop_remainder=True)
 
@@ -53,13 +53,12 @@ embedding_dim = 256
 # Number of RNN units
 rnn_units = 1024
 
-rnn = tf.keras.layers.CuDNNGRU
+#rnn = tf.keras.layers.CuDNNLSTM
 
-'''
 import functools
 rnn = functools.partial(
     tf.keras.layers.GRU, recurrent_activation='sigmoid')
-'''
+
 
 def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
   model = tf.keras.Sequential([
@@ -94,9 +93,9 @@ checkpoint_dir = './training_checkpoints'
 # Name of the checkpoint files
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
 
-model.load_weights(tf.train.latest_checkpoint(checkpoint_dir))
+#model.load_weights(tf.train.latest_checkpoint(checkpoint_dir))
 
-for epoch in range(5):
+for epoch in range(150):
     start = time.time()
 
     # initializing the hidden state at the start of every epoch

@@ -4,7 +4,7 @@ tf.enable_eager_execution()
 import numpy as np
 
 #set correct vocab depending on dataset
-vocab = ['\n', ' ', '!', '"', '$', '%', "'", '(', ')', ',', '-', '.', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'Z', '[', ']', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'Ä', 'Ö', 'Ü', 'ß', 'ä', 'ö', 'ü', '–', '’']
+vocab = ['\n', ' ', '!', '"', '$', '%', "'", '(', ')', ',', '-', '.', ':', ';', '>', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '´', 'Ä', 'Ö', 'Ü', 'ß', 'ä', 'ö', 'ü', '–', '’']
 
 char2idx = {u:i for i, u in enumerate(vocab)}
 idx2char = np.array(vocab)
@@ -25,7 +25,7 @@ def generate_text(model, start_string):
     # Low temperatures results in more predictable text.
     # Higher temperatures results in more surprising text.
     # Experiment to find the best setting.
-    temperature = 1.0
+    temperature = 0.8
 
     # Here batch size == 1
     model.reset_states()
@@ -43,7 +43,7 @@ def generate_text(model, start_string):
         input_eval = tf.expand_dims([predicted_id], 0)
 
         text_generated.append(idx2char[predicted_id])
-
+        if '$' in idx2char[predicted_id]: break
     return (start_string + ''.join(text_generated))
 
-print(generate_text(model, start_string=u"%$Wenn nicht nur Zahlen und Figuren,"))
+print(generate_text(model, start_string=u"%$Wenn nicht nur Zahlen und Figuren"))
