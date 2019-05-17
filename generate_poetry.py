@@ -32,7 +32,7 @@ def generate_text(model, start_string):
     for i in range(num_generate):
         predictions = model(input_eval)
         # remove the batch dimension
-        print(predictions.shape)
+        predictions = tf.squeeze(predictions, 0)
 
         # using a multinomial distribution to predict the word returned by the model
         predictions = predictions / temperature
