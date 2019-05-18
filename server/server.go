@@ -2,10 +2,17 @@ package main
 
 import (  
     "fmt"
+    "math"
+    "math/rand"
+    "time"
 
     tf "github.com/tensorflow/tensorflow/tensorflow/go"
 )
 
+func init() {
+    rand.Seed(time.Now().UTC().UnixNano())
+}
+  
 func main() {  
     // replace myModel and myTag with the appropriate exported names in the chestrays-keras-binary-classification.ipynb
     model, err := tf.LoadSavedModel("poetryModel", []string{"goTag"}, nil)
@@ -39,7 +46,33 @@ func main() {
     batch_predictions := result[0].Value().([][][]float32)
     predictions := batch_predictions[0]
 
-    fmt.Printf("it works: %v", predictions)
+    var probabilities [35][76]float64
+    for i:=0; i < len(predictions); i++ {
+        sum := float64(0)
+        for j:=0; j < 76; j++ {
+            sum += math.Exp(float64(predictions[i][j]))
+        }
+        for j:=0; j < 76; j++ {
+            probabilities[i][j] = math.Exp(float64(predictions[i][j]))/sum
+        }
+    }
+
+    prob_sum := float64(0)
+    r := rand.Float64()
+    p := probabilities[len(probabilities)-1]
+    var predicted_id int
+    for i:=0; i < len(p); i++ {
+        prob_sum += p[i]
+        if prob_sum >= r {
+            predicted_id = i
+            break
+        }
+    }
+    fmt.Printf("%v\n", r)
+    fmt.Printf("%v\n", predicted_id)
+    fmt.Printf("%v\n", p[predicted_id])
+
+    //fmt.Printf("SOFTMAX: %v \n", softmax[0])
 
     //fmt.Printf("Result value: %v \n", result[0].Value())
 
