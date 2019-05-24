@@ -9,7 +9,6 @@ vocab = ['\n', ' ', '!', '"', '$', '%', "'", '(', ')', ',', '-', '.', ':', ';', 
 char2idx = {u:i for i, u in enumerate(vocab)}
 print(char2idx)
 idx2char = np.array(vocab)
-print(vocab, idx2char)
 
 model = tf.keras.models.load_model('./model.h5')
 
