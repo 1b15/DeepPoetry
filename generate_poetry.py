@@ -13,7 +13,7 @@ model = tf.keras.models.load_model('./model.h5')
 
 def generate_text(model, start_string):
     # Number of characters to generate
-    num_generate = 2000
+    num_generate = 1000
 
     # Converting our start string to numbers (vectorizing)
     input_eval = [char2idx[s] for s in start_string]
@@ -32,18 +32,18 @@ def generate_text(model, start_string):
     for i in range(num_generate):
         predictions = model(input_eval)
         # remove the batch dimension
-        print(predictions.shape)
+        predictions = tf.squeeze(predictions, 0)
 
         # using a multinomial distribution to predict the word returned by the model
         predictions = predictions / temperature
         predicted_id = tf.multinomial(predictions, num_samples=1)[-1, 0].numpy()
-
         # We pass the predicted word as the next input to the model
         # along with the previous hidden state
         input_eval = tf.expand_dims([predicted_id], 0)
 
         text_generated.append(idx2char[predicted_id])
+
         if '$' in idx2char[predicted_id]: break
     return (start_string + ''.join(text_generated))
 
-print(generate_text(model, start_string=u"%$Wenn nicht nur Zahlen und Figuren"))
+print(generate_text(model, start_string=u"%$Wenn nicht nur Zahlen und Figuren,\n"))

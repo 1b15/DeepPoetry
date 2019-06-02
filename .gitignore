@@ -1,3 +1,5 @@
 .idea/
 Crawler/*.txt
 ./training_checkpoints
+backend/node_modules
+backend/.babelrc
