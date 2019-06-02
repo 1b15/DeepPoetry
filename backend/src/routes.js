@@ -1,17 +1,19 @@
 import { Router } from 'express';
-import fullPoem from './poetry/poetryModel.js';
+import * as poetryModel from './poetry/poetryModel.js';
 
 const router = Router();
 
+poetryModel.init()
+
 // static files
 router.get('/', function (req, res) {
-    res.send('TODO static files');
-  })
+  res.send('TODO static files');
+})
 
 // full poem
-router.get('/poem/:start', function (req, res) {
-    const response = fullPoem(decodeURIComponent(req.params.start));
-    res.send(response);
-  })
-  
+router.get('/poem/:start', async (req, res) => {
+  const response = await poetryModel.fullPoem(decodeURIComponent(req.params.start));
+  res.send(response);
+})
+
 export default router;
