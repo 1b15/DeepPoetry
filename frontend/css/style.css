@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url('../background3.jpg');
+  background-attachment: fixed;
+  background-position: 0% 85%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1.title {
+  font-family: poets electra web italic,times new roman,Times,serif;
+  font-size: 42px;
+  line-height: 48px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  text-align: center;
+}
+
+pre {
+  font-family: times new roman,Times,serif;
+  font-size: 34px;
+  line-height: 48px;
+  text-align: center;
+}
+
+input {
+  font-family: times new roman,Times,serif;
+  font-size: 34px;
+  line-height: 48px;
+
+  background: transparent;
+  color: black;
+  resize: none;
+  border: 0 none;
+  outline: none;
+
+}
+
+.primer {
+  text-align: left;
+}
+
+.poem-container {
+  text-align: center;
+  padding: 20px;
+  height: 100%;
+  position: relative;
+}
