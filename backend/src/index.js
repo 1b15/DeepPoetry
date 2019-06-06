@@ -7,6 +7,10 @@ const app = express();
 //logger
 app.use(morgan('combined'));
 
+//static files
+app.use(express.static('../frontend/'))
+
+//api
 app.use(router);
 
 app.listen(3000, () =>
