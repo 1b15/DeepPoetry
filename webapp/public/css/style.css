@@ -22,31 +22,33 @@ h1.title {
 
 pre {
   font-family: times new roman,Times,serif;
-  font-size: 34px;
+  font-size: 40px;
   line-height: 48px;
   text-align: center;
 }
 
 input {
   font-family: times new roman,Times,serif;
-  font-size: 34px;
-  line-height: 48px;
-
   background: transparent;
   color: black;
   resize: none;
   border: 0 none;
   outline: none;
-
 }
 
 .primer {
-  text-align: left;
+  text-align: center;
+  font-size: 40px;
+  line-height: 48px;
 }
 
 .poem-container {
   text-align: center;
-  padding: 20px;
   height: 100%;
   position: relative;
+  margin: 5%;
+}
+
+.hidden {
+  display: none;
 }

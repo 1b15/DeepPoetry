@@ -1,4 +1,4 @@
 .idea/
 Crawler/*.txt
 ./training_checkpoints
-backend/node_modules
+webapp/node_modules
