@@ -6,5 +6,9 @@ socket.on('connect', () => {
 
 socket.on('charstream', (c) => {
     console.log('receiving...')
-    $("#generatedpoem").append(c);
+    if(c === '%'){
+      $("#generatedpoem").append('\n');
+    }else{
+      $("#generatedpoem").append(c);
+    }
 });

@@ -53,6 +53,7 @@ async function streamPoem(s, socket) {
     const predicted_id = mnomial[mnomial.length - 1];
     const predicted_char = id2char[predicted_id];
     socket.emit('charstream', predicted_char);
+    await new Promise(res => setTimeout(res, 1));
     if(predicted_char==='$'){
       break;
     }
