@@ -1,3 +1,6 @@
+$(document).ready(calculateFont);
+$(window).resize(calculateFont);
+
 $(function() {
     $("#poemtext").keypress(function (e) {
         if(e.which == 13) {
@@ -10,11 +13,7 @@ $(function() {
     });
 });
 
-$(document).ready(calculateFont);
-$(window).resize(calculateFont);
-
 function calculateFont() {
     $('#poemtext').css('font-size', Math.min(innerHeight, innerWidth)/500 + 0.5 + 'em');
     $('#generatedpoem').css('font-size', Math.min(innerHeight, innerWidth)/500 + 0.5 + 'em');
-    console.log('resized');
 }
