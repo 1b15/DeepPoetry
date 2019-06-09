@@ -2,3 +2,4 @@
 Crawler/*.txt
 ./training_checkpoints
 webapp/node_modules
+webapp/dist

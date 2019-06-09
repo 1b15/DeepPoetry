@@ -55,6 +55,7 @@ async function fullPoem(s) {
       predicted_char = '\n';
     }
     poem += predicted_char;
+    await new Promise(res => setTimeout(res, 1));
     i++;
   }
   return poem;
