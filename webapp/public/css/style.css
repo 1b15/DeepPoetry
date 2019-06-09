@@ -3,12 +3,16 @@
   padding: 0;
 }
 
+html, body{
+  min-height: 100%;
+}
+
 body {
   background-image: url('../background.jpg');
-  background-attachment: fixed;
-  background-position: 0% 85%;
+  background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 input {
