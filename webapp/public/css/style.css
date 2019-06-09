@@ -4,31 +4,14 @@
 }
 
 body {
-  background-image: url('../background3.jpg');
+  background-image: url('../background.jpg');
   background-attachment: fixed;
   background-position: 0% 85%;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-h1.title {
-  font-family: poets electra web italic,times new roman,Times,serif;
-  font-size: 42px;
-  line-height: 48px;
-  padding-bottom: 15px;
-  padding-top: 15px;
-  text-align: center;
-}
-
-pre {
-  font-family: times new roman,Times,serif;
-  font-size: 40px;
-  line-height: 48px;
-  text-align: center;
-}
-
 input {
-  font-family: times new roman,Times,serif;
   background: transparent;
   color: black;
   resize: none;
@@ -36,17 +19,15 @@ input {
   outline: none;
 }
 
-.primer {
+.primer, pre {
+  font-family: times new roman,Times,serif;
   text-align: center;
-  font-size: 40px;
-  line-height: 48px;
+  line-height: 125%;
 }
 
 .poem-container {
   text-align: center;
-  height: 100%;
-  position: relative;
-  margin: 5%;
+  margin: 3em auto;
 }
 
 .hidden {

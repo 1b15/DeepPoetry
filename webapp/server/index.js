@@ -18,8 +18,7 @@ app.use(express.static('public/'))
 
 io.on('connection', (socket) => {
   socket.on('poemcall', (data) => {
-  //TODO DATA VALIDATION
-  poetryModel.streamPoem(data, socket);
+    poetryModel.streamPoem(data, socket);
   })
 });
 
