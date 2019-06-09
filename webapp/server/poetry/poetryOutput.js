@@ -13,13 +13,14 @@ async function streamPoem(s, socket) {
   var i = 0;
   var predicted_char = '';
   //end poem after 500 words with complete verse if no natural end
-  while( i < 500 || (predicted_char != '\n' && predicted_char != ',')){
+  while( i < 500 || (predicted_char != '\n' && predicted_char != ',' && predicted_char != ':')){
     //emits next character on sleep
     socket.emit('charstream', predicted_char);
     await new Promise(res => setTimeout(res, 1));
 
     //end of poem condition
     if(predicted_char==='$'){
+      socket.emit('charstream', '$');
       return;
     }
 
@@ -28,7 +29,8 @@ async function streamPoem(s, socket) {
     i++;
   }
   //emit end of poem
-  socket.emit('charstream', '\n\n$');
+  socket.emit('charstream', '\n\n');
+  socket.emit('charstream', '$');
 }
 
 async function fullPoem(s) {
@@ -45,7 +47,7 @@ async function fullPoem(s) {
   var i = 0;
   var predicted_char = '';
   //end poem after 500 words with complete verse if no natural end
-  while( i < 500 || (predicted_char != '\n' && predicted_char != ',')){
+  while( i < 500 || (predicted_char != '\n' && predicted_char != ',' && predicted_char != ':')){
     [input, predicted_char] = await generateChar(model, input);
     if(predicted_char==='$'){
       break;

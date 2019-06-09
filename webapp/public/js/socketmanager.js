@@ -2,17 +2,14 @@ const socket = io({ rememberTransport: false, transports: ['websocket']});
 
 socket.on('charstream', (c) => {
   if(c === '%'){
-    $("#generatedpoem").append('\n');
+    $('#generatedpoem').append('\n');
+  }else if(c === '$'){
+    $('#buttons').fadeIn('slow');
   }else{
-    $("#generatedpoem").append(c);
+    $('#generatedpoem').append(c);
   }
 });
 
 socket.on('badinput', (error) => {
-  $('#poemtext').removeAttr('readonly');
-  $('#poemtext').removeClass('hidden');
-  $("#poemtext").val('');
-  $('#poemtext').attr('placeholder', 'Bitte mit Worten inspirieren');
-  $('#poemtext').focus();
-  $("#generatedpoem").text('');
+  resetInput('Bitte mit Worten inspirieren');
 })

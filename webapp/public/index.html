@@ -10,6 +10,7 @@
   <meta charset="UTF-8">
   <title>testpoetry</title>  
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fontawesome.css">
  </head>
 
 <body>
@@ -17,7 +18,18 @@
     <input type="text" id="poemtext" class="primer" autofocus placeholder="Inspiriere mich">
     <pre id="generatedpoem">
     </pre>
-  </div>       
-</body>
+  </div>
 
+  <div id="buttons" class="hidden buttondiv">
+    <button id="githubref" onclick=" window.open('https://github.com/1b15/DeepPoetry', '_blank')">
+      <i class="fab fa-github"></i>
+    </button>
+    <button type="reset" id="reset" onclick="resetInput('Inspiriere mich')">
+      <i class="fas fa-redo"></i>
+    </button>
+    <button id="docker" onclick=" window.open('https://hub.docker.com/u/1b15', '_blank')">
+      <i class="fab fa-docker"></i>
+    </button>
+  </div>
+</body>
 </html>
