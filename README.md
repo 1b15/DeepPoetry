@@ -1,6 +1,6 @@
 # DeepPoetry
 
-A simple TF Keras model trained on ~500k characters of German poetry from the romantic era that will generate a poem based on initial input.
+A simple TF Keras model trained on ~200k characters of German poetry from the romantic era that will generate a poem based on initial input.
 
 Try it out yourself: `docker run -p <your port>:3000 -d 1b15/deep-poetry`
 
